@@ -7,6 +7,8 @@ function createGameObject() {
         height: 25,
         color: "red",
         radius: 25,
+        speed:2,
+        scale:1,
         moveX:setRandomDirection(),
         moveY:setRandomDirection(),
         drawCircle: function () {
@@ -14,6 +16,14 @@ function createGameObject() {
             ctx.fillStyle = this.color;
             ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
             ctx.fill();
+        },
+        drawSquare:function(){
+            ctx.save();
+            ctx.translate(this.x,this.y);
+            ctx.fillStyle = this.color;
+            ctx.scale(this.scale, this.scale);
+            ctx.fillRect(-this.width/2, -this.height/2, this.width,this.height);
+            ctx.restore()
         }
     }
     return obj;
